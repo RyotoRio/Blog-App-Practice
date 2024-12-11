@@ -16,7 +16,7 @@ const DetailPost = () => {
       </button>
       <div className="detail-container">
         <h2 className="post-title">React Blog post</h2>
-        <h5 className="post-category">Category: Categroy 2</h5>
+        <h5 className="post-category">Category: Categroy 1</h5>
         <h5 className="post-category">Created at: 12/08/2024</h5>
         <h5 className="post-category">Updated at: 12/08/2024</h5>
         <p className="post-desc">
