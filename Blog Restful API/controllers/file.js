@@ -20,19 +20,22 @@ const uploadFile = async (req, res, next) => {
 
     if (!isvalidExt) {
       res.code = 400;
-      throw new Error("Only supported image file are require (jpg, jpeg, png)");
+      throw new Error(
+        "Only supported image files are required (jpg, jpeg, png)"
+      );
     }
 
     const pic = uploadImage({ file, ext, user });
     console.log(pic);
 
-    imgSchema.create(pic);
+    // Wait for the image to be created in the database
+    const createdPic = await imgSchema.create(pic);
 
     res.status(200).json({
       code: 200,
       status: true,
       message: "File Uploaded successfully",
-      data: pic,
+      data: createdPic, // This includes the `_id`
     });
   } catch (error) {
     next(error);
