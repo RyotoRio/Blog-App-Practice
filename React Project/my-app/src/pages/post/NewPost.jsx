@@ -74,7 +74,6 @@ const NewPost = () => {
         let input = formData;
 
         if (fileId) {
-          // eslint-disable-next-line no-unused-vars
           input = { ...input, file: fileId };
         }
 
