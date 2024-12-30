@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import axios from "../../utils/axiosInstance";
@@ -112,10 +113,10 @@ const PostList = () => {
             <div
               className="post-card"
               key={post._id}
-              onClick={() => navigate("detail-post")}
+              onClick={() => navigate(`detail-post/${post._id}`)}
             >
-              <h4 className="card-title">{post.title}</h4>
-              <p className="card-desc">{post.desc.substring(0, 50)}</p>
+              <h4 className="card-title">{post?.title}</h4>
+              <p className="card-desc">{post?.desc.substring(0, 50)}</p>
               <img src={placeImg} alt="mern" className="card-img" />
             </div>
           ))

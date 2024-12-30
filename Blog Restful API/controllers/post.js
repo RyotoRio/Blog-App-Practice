@@ -130,12 +130,12 @@ const getPosts = async (req, res, next) => {
     const pages = Math.ceil(total / sizeNumber);
 
     const posts = await Post.find(query)
+      .populate("file")
+      .populate("category")
+      .populate("updatedBy", "-password -forgetPasswordCode -verificationCode")
       .sort({ updatedBy: -1 })
       .skip((pageNumber - 1) * sizeNumber)
-      .limit(sizeNumber)
-      .populate("file", "-img.data")
-      .populate("category")
-      .populate("updatedBy", "-password -forgetPasswordCode -verificationCode");
+      .limit(sizeNumber);
 
     res.status(200).json({
       code: 200,
@@ -152,7 +152,7 @@ const getPost = async (req, res, next) => {
   try {
     const { id } = req.params;
     const post = await Post.findById(id)
-      .populate("file", "-img.data")
+      .populate("file")
       .populate("category")
       .populate("updatedBy", "-password -forgetPasswordCode -verificationCode");
 
